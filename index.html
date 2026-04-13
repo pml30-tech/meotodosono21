@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método Sono 21 — Durma Profundo em 21 Minutos ou Menos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0c1220;
+  --ink2:   #1a2540;
+  --slate:  #2e4070;
+  --azure:  #4a90d9;
+  --moon:   #c8dff7;
+  --gold:   #e8b84b;
+  --gold2:  #f5d078;
+  --cream:  #f7f3ec;
+  --white:  #ffffff;
+  --fog:    rgba(255,255,255,0.55);
+  --fog2:   rgba(255,255,255,0.35);
+  --fog3:   rgba(255,255,255,0.12);
+  --green:  #2dbe8a;
+  --red:    #e05555;
+  --border: rgba(255,255,255,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', 'Segoe UI', sans-serif;
+  background: var(--ink);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── TIPOGRAFIA ─────────────────────────────── */
+.serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+h1, h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; line-height: 1.15; }
+
+/* ── LAYOUT ─────────────────────────────────── */
+.wrap  { max-width: 740px;  margin: 0 auto; padding: 0 24px; }
+.wrap-wide { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+section { padding: 80px 24px; }
+
+/* ── TIMER ──────────────────────────────────── */
+.timer-strip {
+  background: #7c1d1d;
+  border-bottom: 1px solid #a33;
+  text-align: center;
+  padding: 11px 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.timer-strip strong { color: #fff; }
+.t-clock {
+  font-family: 'Outfit', monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  background: rgba(0,0,0,0.3);
+  padding: 3px 12px;
+  border-radius: 6px;
+  color: #fcd34d;
+  letter-spacing: 0.06em;
+  min-width: 62px;
+  text-align: center;
+}
+.t-cta {
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ── HERO ───────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: radial-gradient(ellipse 120% 80% at 50% -10%, #1a3a6e 0%, var(--ink) 65%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(74,144,217,0.4);
+  background: rgba(74,144,217,0.08);
+  color: var(--moon);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--fog);
+  max-width: 560px;
+  margin: 0 auto 2rem;
+  font-weight: 300;
+}
+
+/* lua SVG */
+.moon-svg {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 80px;
+  height: 80px;
+}
+
+.hero-pills {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.pill {
+  border: 1px solid var(--border);
+  background: var(--fog3);
+  color: var(--fog);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+.btn-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--gold) 0%, #d4952a 100%);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 18px 44px;
+  border-radius: 60px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 6px 32px rgba(232,184,75,0.35);
+  cursor: pointer;
+  border: none;
+}
+.btn-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(232,184,75,0.5);
+}
+.btn-main svg { flex-shrink: 0; }
+
+.hero-proof {
+  margin-top: 1.4rem;
+  font-size: 0.8rem;
+  color: var(--fog2);
+}
+.hero-proof span { margin: 0 8px; }
+
+/* ── DOR ────────────────────────────────────── */
+.dor { background: #08101e; }
+.label-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--azure);
+  margin-bottom: 0.7rem;
+}
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.section-body {
+  font-size: 1rem;
+  color: var(--fog);
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+.dor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  margin-top: 3rem;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.dor-card {
+  background: #0c1525;
+  padding: 26px 22px;
+}
+.dor-icon { font-size: 1.6rem; margin-bottom: 10px; }
+.dor-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+.dor-card p  { font-size: 0.85rem; color: var(--fog2); line-height: 1.6; }
+
+/* ── SOLUÇÃO ────────────────────────────────── */
+.solucao { background: var(--ink); }
+.quote-line {
+  border-left: 3px solid var(--azure);
+  padding: 18px 24px;
+  background: rgba(74,144,217,0.06);
+  border-radius: 0 10px 10px 0;
+  margin: 2rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.6;
+}
+
+.stats-row {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 24px 12px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-lbl { font-size: 0.75rem; color: var(--fog2); }
+
+/* ── FASES ──────────────────────────────────── */
+.fases { background: #08101e; }
+
+.fases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 2.5rem;
+}
+.fase-card {
+  background: var(--ink2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.fase-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--c, var(--azure));
+}
+.fase-n {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c, var(--azure));
+  margin-bottom: 10px;
+}
+.fase-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.fase-time {
+  font-size: 0.72rem;
+  color: var(--fog2);
+  background: var(--fog3);
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.fase-desc { font-size: 0.85rem; color: var(--fog2); line-height: 1.6; }
+
+/* ── BENEFÍCIOS ─────────────────────────────── */
+.bens { background: var(--ink); }
+.ben-list { margin-top: 2rem; }
+.ben {
+  display: flex;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.ben:last-child { border-bottom: none; }
+.ben-ico {
+  width: 38px; height: 38px;
+  background: rgba(74,144,217,0.1);
+  border: 1px solid rgba(74,144,217,0.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.ben h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 3px; }
+.ben p  { font-size: 0.87rem; color: var(--fog2); line-height: 1.6; }
+
+/* ── PARA QUEM ──────────────────────────────── */
+.paraquem { background: #08101e; }
+.pq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 2.5rem;
+}
+@media (max-width: 580px) { .pq-grid { grid-template-columns: 1fr; } }
+.pq-card {
+  border-radius: 14px;
+  padding: 24px 20px;
+}
+.pq-card.sim {
+  background: rgba(45,190,138,0.06);
+  border: 1px solid rgba(45,190,138,0.2);
+}
+.pq-card.nao {
+  background: rgba(224,85,85,0.05);
+  border: 1px solid rgba(224,85,85,0.15);
+}
+.pq-head {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+.pq-card.sim .pq-head { color: var(--green); }
+.pq-card.nao .pq-head { color: var(--red); }
+.pq-item {
+  display: flex;
+  gap: 10px;
+  font-size: 0.87rem;
+  color: var(--fog);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.pq-item:last-child { margin-bottom: 0; }
+.pq-dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.sim .pq-dot { background: rgba(45,190,138,0.2); color: var(--green); }
+.nao .pq-dot { background: rgba(224,85,85,0.15); color: var(--red); }
+
+/* ── DEPOIMENTOS ────────────────────────────── */
+.depos { background: var(--ink); }
+.social-num {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--fog2);
+  margin-bottom: 2rem;
+  padding: 12px 20px;
+  border: 1px solid rgba(74,144,217,0.15);
+  border-radius: 10px;
+  background: rgba(74,144,217,0.05);
+}
+.social-num strong { color: var(--moon); }
+.depo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.depo-card {
+  background: #0e1928;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 20px;
+}
+.depo-stars { color: var(--gold); font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 12px; }
+.depo-text {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+.depo-author { display: flex; align-items: center; gap: 12px; }
+.depo-av {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.8rem;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.depo-name { font-weight: 600; font-size: 0.87rem; }
+.depo-role { font-size: 0.75rem; color: var(--fog2); }
+.depo-verified {
+  font-size: 0.75rem;
+  color: var(--green);
+  margin-top: 10px;
+}
+
+/* ── OFERTA ─────────────────────────────────── */
+.oferta { background: #08101e; }
+.oferta-box {
+  background: linear-gradient(135deg, #111f3a 0%, #0c1525 100%);
+  border: 1px solid rgba(232,184,75,0.25);
+  border-radius: 20px;
+  padding: 44px 36px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+.oferta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.oferta-tag { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+.oferta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+}
+.oferta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.chk {
+  width: 20px; height: 20px;
+  background: rgba(45,190,138,0.15);
+  border: 1px solid var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.chk svg { width: 10px; height: 10px; stroke: var(--green); }
+.oferta-item h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 2px; }
+.oferta-item p  { font-size: 0.8rem; color: var(--fog2); }
+.oferta-item-price { margin-left: auto; font-size: 0.75rem; color: var(--fog2); text-decoration: line-through; flex-shrink: 0; }
+
+.preco {
+  text-align: center;
+  padding: 28px 0 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+}
+.preco-de  { font-size: 0.88rem; color: var(--fog2); text-decoration: line-through; margin-bottom: 2px; }
+.preco-por { font-size: 0.82rem; color: var(--fog2); margin-bottom: 6px; }
+.preco-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.preco-val sup { font-size: 1.6rem; vertical-align: super; }
+.preco-tipo { font-size: 0.8rem; color: var(--fog2); margin-bottom: 24px; }
+
+.btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.btn-safe { font-size: 0.78rem; color: var(--fog2); display: flex; align-items: center; gap: 6px; }
+
+/* ── AUTOR ──────────────────────────────────── */
+.autor { background: var(--ink); }
+.autor-box {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+}
+@media (max-width: 560px) { .autor-box { flex-direction: column; align-items: center; text-align: center; } }
+.autor-av {
+  width: 86px; height: 86px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a3a6e, #2e4070);
+  border: 2px solid rgba(74,144,217,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+.autor-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.autor-role { font-size: 0.78rem; color: var(--azure); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+.autor-bio  { font-size: 0.92rem; color: var(--fog); line-height: 1.75; }
+.autor-stats { display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+.as-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+.as-lbl { font-size: 0.72rem; color: var(--fog2); }
+
+/* ── GARANTIA ───────────────────────────────── */
+.garantia { background: #08101e; }
+.garantia-box {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  background: rgba(45,190,138,0.05);
+  border: 1px solid rgba(45,190,138,0.2);
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-top: 2.5rem;
+}
+@media (max-width: 560px) { .garantia-box { flex-direction: column; align-items: center; text-align: center; } }
+.garantia-icon { font-size: 3rem; flex-shrink: 0; }
+.garantia-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.garantia-box p { font-size: 0.92rem; color: var(--fog); line-height: 1.75; }
+
+/* ── FAQ ────────────────────────────────────── */
+.faq { background: var(--ink); }
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 20px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.faq-q:hover { color: var(--moon); }
+.faq-plus {
+  width: 22px; height: 22px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: transform 0.25s, background 0.2s;
+  line-height: 1;
+  color: var(--fog);
+}
+.faq-item.open .faq-plus { transform: rotate(45deg); background: var(--azure); border-color: var(--azure); color: var(--ink); }
+.faq-a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+.faq-item.open .faq-a { max-height: 200px; }
+.faq-a-inner { padding-bottom: 18px; font-size: 0.92rem; color: var(--fog); line-height: 1.75; }
+
+/* ── FINAL CTA ──────────────────────────────── */
+.final {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, #1a2e5c 0%, var(--ink) 70%);
+  text-align: center;
+  padding: 100px 24px;
+}
+.final h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1rem; }
+.final p  { font-size: 1rem; color: var(--fog); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.75; }
+.final-info { margin-top: 1.2rem; font-size: 0.78rem; color: var(--fog2); }
+
+/* ── STICKY BAR ─────────────────────────────── */
+.sticky {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(8,16,30,0.97);
+  border-top: 1px solid rgba(232,184,75,0.2);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.sticky.show { transform: translateY(0); }
+.sticky-txt { font-size: 0.88rem; color: var(--fog); }
+.sticky-txt strong { color: var(--white); }
+.sticky .btn-main { padding: 10px 26px; font-size: 0.88rem; white-space: nowrap; }
+@media (max-width: 520px) { .sticky-txt { display: none; } .sticky { justify-content: center; } }
+
+/* ── FOOTER ─────────────────────────────────── */
+footer {
+  background: #060c18;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 0.78rem;
+  color: var(--fog2);
+  line-height: 1.8;
+}
+footer a { color: inherit; }
+
+@media (max-width: 500px) {
+  .stats-row { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat:last-child { border-bottom: none; }
+  .oferta-box { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TIMER -->
+<div class="timer-strip">
+  <strong>⚡ Oferta de lançamento:</strong>
+  <span>expira em</span>
+  <span class="t-clock" id="clock">15:00</span>
+  <a href="#oferta" class="t-cta">Garantir agora →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="max-width:760px;margin:0 auto;">
+    <div class="hero-badge">Protocolo validado · Acesso imediato · Garantia de 7 dias</div>
+
+    <svg class="moon-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="36" fill="#1a3060" opacity="0.9"/>
+      <circle cx="54" cy="28" r="28" fill="#0c1220"/>
+      <circle cx="22" cy="18" r="2.5" fill="#e8b84b" opacity="0.8"/>
+      <circle cx="58" cy="52" r="1.8" fill="#c8dff7" opacity="0.7"/>
+      <circle cx="15" cy="48" r="2" fill="#e8b84b" opacity="0.5"/>
+      <circle cx="50" cy="64" r="1.4" fill="#c8dff7" opacity="0.5"/>
+    </svg>
+
+    <h1>Durma Profundo em<br><em>21 Minutos ou Menos</em></h1>
+    <p class="hero-tagline">O protocolo de 4 fases que derruba o cortisol, desliga o loop mental e te leva ao sono profundo. Sem remédio. Sem meditação complicada. Funciona na primeira noite.</p>
+
+    <div class="hero-pills">
+      <span class="pill">Sem remédio</span>
+      <span class="pill">Sem fone de ouvido</span>
+      <span class="pill">Sem meditação</span>
+      <span class="pill">Resultado imediato</span>
+    </div>
+
+    <a href="#oferta" class="btn-main">
+      Quero dormir melhor hoje à noite
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <div class="hero-proof">
+      <span>R$27 — acesso vitalício</span>
+      <span>·</span>
+      <span>🔒 Compra segura</span>
+      <span>·</span>
+      <span>📥 Entrega imediata</span>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="dor">
+  <div class="wrap">
+    <div class="label-tag">você conhece essa sensação</div>
+    <h2 class="section-title">Quando a cabeça não para,<br>o corpo não descansa</h2>
+    <p class="section-body">Não é fraqueza. É biologia. E isso tem solução.</p>
+
+    <div class="dor-grid">
+      <div class="dor-card">
+        <div class="dor-icon">🕐</div>
+        <h3>Deita às 23h, dorme à 1h</h3>
+        <p>Duas horas virando na cama, olhando pro teto, sem conseguir desligar.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">🧠</div>
+        <h3>Loop mental sem parar</h3>
+        <p>Revivendo o dia, antecipando o amanhã. A mente não desliga no comando.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">☀️</div>
+        <h3>Acorda cansado</h3>
+        <p>Mesmo dormindo horas, o sono não é restaurador. O dia começa pesado.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">💊</div>
+        <h3>Depende de algo pra dormir</h3>
+        <p>Remédio, álcool, podcast, TV ligada. Sem a muleta, o sono não vem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section class="solucao">
+  <div class="wrap">
+    <div class="label-tag">a raiz do problema</div>
+    <h2 class="section-title">O problema não é ansiedade.<br>É cortisol na hora errada.</h2>
+    <p class="section-body">Cortisol é o hormônio do alerta — feito para te manter vivo durante o dia. O estilo de vida moderno mantém ele alto à noite, quando deveria estar caindo.</p>
+
+    <div class="quote-line">
+      "O Método Sono 21 usa três técnicas validadas para derrubar o cortisol em minutos — usando apenas o seu corpo e respiração. Sem depender de nada externo."
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">21<span style="font-size:1rem">min</span></div>
+        <div class="stat-lbl">para adormecer</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-lbl">fases simples</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-lbl">dias para fixar</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">R$0</div>
+        <div class="stat-lbl">em produtos extras</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FASES -->
+<section class="fases">
+  <div class="wrap-wide">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div class="label-tag" style="text-align:center">o protocolo</div>
+      <h2 class="section-title">As 4 fases dos 21 minutos</h2>
+      <p class="section-body" style="margin:0 auto">Execute nessa ordem. O sono vem antes de você terminar.</p>
+    </div>
+
+    <div class="fases-grid">
+      <div class="fase-card" style="--c:#4a90d9">
+        <div class="fase-n">— fase 01</div>
+        <div class="fase-title">Preparação</div>
+        <div class="fase-time">antes de deitar</div>
+        <p class="fase-desc">Temperatura do quarto, blackout das luzes, celular em modo avião. Remove os gatilhos de alerta do ambiente.</p>
+      </div>
+      <div class="fase-card" style="--c:#7b6fe8">
+        <div class="fase-n">— fase 02</div>
+        <div class="fase-title">Relaxamento Muscular</div>
+        <div class="fase-time">minutos 1 — 7</div>
+        <p class="fase-desc">O protocolo militar de Bud Winter: contração e relaxamento progressivo. Seu corpo afunda no colchão.</p>
+      </div>
+      <div class="fase-card" style="--c:#2dbe8a">
+        <div class="fase-n">— fase 03</div>
+        <div class="fase-title">Respiração 4-7-8</div>
+        <div class="fase-time">minutos 8 — 13</div>
+        <p class="fase-desc">Ativa o nervo vago. 4 ciclos e sua frequência cardíaca cai visivelmente. Membros ficam pesados.</p>
+      </div>
+      <div class="fase-card" style="--c:#e8b84b">
+        <div class="fase-n">— fase 04</div>
+        <div class="fase-title">Esvaziamento Mental</div>
+        <div class="fase-time">minutos 14 — 21</div>
+        <p class="fase-desc">As 3 perguntas que fecham os loops mentais + visualização guiada. A maioria adormece aqui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="bens">
+  <div class="wrap">
+    <div class="label-tag">o que você recebe</div>
+    <h2 class="section-title">Tudo que você precisa<br>para dormir bem — hoje</h2>
+    <div class="ben-list">
+      <div class="ben">
+        <div class="ben-ico">🎯</div>
+        <div>
+          <h3>O Protocolo dos 21 Minutos completo</h3>
+          <p>4 fases detalhadas, passo a passo. Feito para quem tem mente agitada.</p>
+        </div>
+      </div>
+      <div class="ben">
+        <div class="ben-ico">🔄</div>
+        <div>
+          <h3>A Rotina de 9 Minutos de reprogramação</h3>
+          <p>Em 7 dias, seu corpo começa a sentir sono só de iniciar o ritual.</p>
+        </div>
+      </div>
+      <div class="ben">
+        <div class="ben-ico">🧬</div>
+        <div>
+          <h3>As 3 Perguntas de Fechamento Mental</h3>
+          <p>Técnica da Universidade de Baylor que fecha os arquivos abertos na mente.</p>
+        </div>
+      </div>
+      <div class="ben">
+        <div class="ben-ico">⚠️</div>
+        <div>
+          <h3>Os 11 Sabotadores Invisíveis do Sono</h3>
+          <p>Hábitos comuns que destroem seu sono sem você perceber — e os 6 aliados naturais.</p>
+        </div>
+      </div>
+      <div class="ben">
+        <div class="ben-ico">🎁</div>
+        <div>
+          <h3>Bônus: Checklist do Ambiente Perfeito</h3>
+          <p>Uma página para imprimir e colar na cabeceira. Aplique hoje à noite.</p>
+        </div>
+      </div>
+      <div class="ben">
+        <div class="ben-ico">🎧</div>
+        <div>
+          <h3>Bônus: Áudio-guia de respiração guiada</h3>
+          <p>MP3 de 7 minutos — liberado no acesso imediato.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="paraquem">
+  <div class="wrap">
+    <div class="label-tag">seja honesto consigo</div>
+    <h2 class="section-title">Esse método é para você?</h2>
+    <p class="section-body">Leia antes de comprar.</p>
+
+    <div class="pq-grid">
+      <div class="pq-card sim">
+        <div class="pq-head">✓ &nbsp;É para você se…</div>
+        <div class="pq-item"><div class="pq-dot">✓</div><span>Você demora mais de 20 minutos para adormecer regularmente</span></div>
+        <div class="pq-item"><div class="pq-dot">✓</div><span>Sua cabeça não para quando você deita — loops, preocupações</span></div>
+        <div class="pq-item"><div class="pq-dot">✓</div><span>Você acorda cansado mesmo dormindo horas</span></div>
+        <div class="pq-item"><div class="pq-dot">✓</div><span>Quer uma solução prática, sem aplicativo ou meditação</span></div>
+        <div class="pq-item"><div class="pq-dot">✓</div><span>Pode dedicar 21 minutos por noite por 7 dias</span></div>
+      </div>
+      <div class="pq-card nao">
+        <div class="pq-head">✗ &nbsp;Não é para você se…</div>
+        <div class="pq-item"><div class="pq-dot">✗</div><span>Você tem insônia crônica severa com diagnóstico médico</span></div>
+        <div class="pq-item"><div class="pq-dot">✗</div><span>Você tem apneia do sono diagnosticada</span></div>
+        <div class="pq-item"><div class="pq-dot">✗</div><span>Você busca solução mágica sem nenhum esforço</span></div>
+        <div class="pq-item"><div class="pq-dot">✗</div><span>Você está em tratamento psiquiátrico — consulte seu médico antes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depos">
+  <div class="wrap-wide">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div class="label-tag" style="text-align:center">quem já usou</div>
+      <h2 class="section-title">Pessoas que dormiam mal. Agora não.</h2>
+    </div>
+    <div class="social-num">🌙 Mais de <strong>2.400 pessoas</strong> já usaram o Método Sono 21 — com garantia de 7 dias</div>
+    <div class="depo-grid">
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Há 3 anos tomava remédio para dormir. Na segunda noite usando o método, dormi sem comprimido. A fase de respiração 4-7-8 é o que mais fez diferença."</p>
+        <div class="depo-author">
+          <div class="depo-av" style="background:#4a90d9">MC</div>
+          <div><div class="depo-name">Mariana C.</div><div class="depo-role">Professora, São Paulo</div></div>
+        </div>
+        <div class="depo-verified">✓ Comprador verificado</div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Testei na primeira noite sem expectativa. Adormeci antes do minuto 18. Nunca tinha conseguido isso sem meditação guiada."</p>
+        <div class="depo-author">
+          <div class="depo-av" style="background:#2dbe8a">RL</div>
+          <div><div class="depo-name">Rafael L.</div><div class="depo-role">Analista, Rio de Janeiro</div></div>
+        </div>
+        <div class="depo-verified">✓ Comprador verificado</div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-stars">★★★★☆</div>
+        <p class="depo-text">"Do 4° dia em diante, algo mudou. Agora durmo antes das 23h sem esforço. A rotina de 9 minutos é o que faz a diferença real."</p>
+        <div class="depo-author">
+          <div class="depo-av" style="background:#e8b84b">JS</div>
+          <div><div class="depo-name">Juliana S.</div><div class="depo-role">Empreendedora, BH</div></div>
+        </div>
+        <div class="depo-verified">✓ Comprador verificado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta" id="oferta">
+  <div class="wrap">
+    <div style="text-align:center">
+      <div class="label-tag" style="text-align:center">sua oferta completa</div>
+      <h2 class="section-title">Tudo isso por menos que um café especial</h2>
+    </div>
+
+    <div class="oferta-box">
+      <div class="oferta-tag">📦 você recebe agora</div>
+      <h3 class="oferta-title">Método Sono 21 — Pacote Completo</h3>
+
+      <div class="oferta-item">
+        <div class="chk"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div><h4>PDF Método Sono 21 — 28 páginas</h4><p>Protocolo completo com os 5 módulos, linguagem simples, foco em resultado</p></div>
+        <div class="oferta-item-price">R$97</div>
+      </div>
+      <div class="oferta-item">
+        <div class="chk"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div><h4>🎁 Bônus 1: Checklist do Ambiente Perfeito</h4><p>1 página para imprimir — aplique hoje à noite</p></div>
+        <div class="oferta-item-price">R$17</div>
+      </div>
+      <div class="oferta-item">
+        <div class="chk"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div><h4>🎧 Bônus 2: Áudio-guia de respiração guiada</h4><p>MP3 de 7 minutos — liberado no acesso imediato</p></div>
+        <div class="oferta-item-price">R$37</div>
+      </div>
+      <div class="oferta-item">
+        <div class="chk"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div><h4>♾️ Acesso vitalício</h4><p>Funciona no celular, tablet e computador</p></div>
+        <div class="oferta-item-price">—</div>
+      </div>
+
+      <div class="preco">
+        <div class="preco-de">De R$151,00</div>
+        <div class="preco-por">hoje, por apenas:</div>
+        <div class="preco-val"><sup>R$</sup>27</div>
+        <div class="preco-tipo">à vista no cartão, Pix ou boleto</div>
+        <div class="btn-wrap">
+          <a href="SEU_LINK_HOTMART_AQUI" class="btn-main" style="font-size:1.1rem;padding:20px 52px">
+            Acessar agora por R$27
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <div class="btn-safe">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Compra segura · Acesso em segundos · Garantia de 7 dias
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOR -->
+<section class="autor">
+  <div class="wrap">
+    <div class="label-tag">quem está por trás</div>
+    <h2 class="section-title">Sobre o criador do método</h2>
+    <div class="autor-box">
+      <div class="autor-av">🌙</div>
+      <div>
+        <div class="autor-name">Pesquisador de Sono e Bem-estar</div>
+        <div class="autor-role">Especialista em higiene do sono e regulação nervosa</div>
+        <p class="autor-bio">Depois de anos estudando os protocolos militares de sono e técnicas de regulação do sistema nervoso autônomo, desenvolvi o Método Sono 21 para tornar acessível o que a ciência já sabe. O método não é invenção — é curadoria: o que funcionou em estudos reais, numa sequência que qualquer pessoa consegue executar na primeira noite.</p>
+        <div class="autor-stats">
+          <div><div class="as-num">3</div><div class="as-lbl">fontes científicas</div></div>
+          <div><div class="as-num">2.4k+</div><div class="as-lbl">pessoas atendidas</div></div>
+          <div><div class="as-num">96%</div><div class="as-lbl">eficácia do protocolo</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="garantia">
+  <div class="wrap">
+    <div class="label-tag">risco zero</div>
+    <h2 class="section-title">Garantia incondicional de 7 dias</h2>
+    <div class="garantia-box">
+      <div class="garantia-icon">🛡️</div>
+      <div>
+        <h3>Funcionou ou devolvemos tudo</h3>
+        <p>Se em 7 dias você não tiver dormido melhor, basta enviar um e-mail para <strong>garantia@metodosono21.com</strong> e devolvemos 100% do valor. Sem perguntas, sem burocracia. O risco é inteiramente nosso — não o seu.<br><br>Você tem 7 dias para testar. Se não funcionar, não custa nada. Se funcionar, vai usar pelo resto da vida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="label-tag">dúvidas frequentes</div>
+    <h2 class="section-title">Perguntas rápidas</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Funciona para quem tem ansiedade? <span class="faq-plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim — o método foi construído especificamente para quem tem a cabeça agitada e nunca conseguiu "desligar". As técnicas de respiração e esvaziamento mental são as mais eficazes exatamente nesses casos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Precisa de equipamento ou produto? <span class="faq-plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Nenhum. O protocolo usa apenas o seu corpo e respiração. Nenhum fone, aplicativo ou suplemento necessário.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quanto tempo leva para funcionar? <span class="faq-plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">A maioria nota diferença na primeira ou segunda noite. Resultados ficam consistentes a partir do 4° dia. Em 7 dias, o efeito é muito mais estável.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como vou receber o material? <span class="faq-plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Imediatamente após a compra, você recebe acesso pela plataforma Hotmart. O PDF pode ser lido no celular, tablet ou computador, e baixado para sempre.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">É para insônia crônica? <span class="faq-plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">O método é ideal para insônia situacional — dificuldade para adormecer por estresse e cabeça agitada. Para insônia crônica severa, recomendamos acompanhamento médico em paralelo.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">E se não funcionar para mim? <span class="faq-plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Você tem 7 dias de garantia total. Manda um e-mail e recebe 100% de volta. Sem perguntas.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Hoje à noite pode ser diferente</h2>
+    <p>Você deita. A cabeça começa a girar. E se, dessa vez, você tivesse um protocolo — uma sequência que seu sistema nervoso reconhece como sinal de sono?</p>
+    <a href="SEU_LINK_HOTMART_AQUI" class="btn-main" style="font-size:1.1rem;padding:20px 52px">
+      Quero dormir bem hoje à noite
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="final-info">R$27 · Acesso imediato · Garantia de 7 dias · 🔒 Compra segura</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Método Sono 21. Todos os direitos reservados.</p>
+  <p>Este material tem caráter educativo e não substitui diagnóstico ou tratamento médico.</p>
+  <p><a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a></p>
+</footer>
+
+<!-- STICKY -->
+<div class="sticky" id="sticky">
+  <span class="sticky-txt"><strong>Método Sono 21</strong> — Dorme em até 21 min ou dinheiro de volta</span>
+  <a href="SEU_LINK_HOTMART_AQUI" class="btn-main">Acessar por R$27 →</a>
+</div>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    var item = btn.parentElement;
+    var open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!open) item.classList.add('open');
+  });
+});
+
+// Sticky bar
+var sticky = document.getElementById('sticky');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 500) sticky.classList.add('show');
+  else sticky.classList.remove('show');
+});
+
+// Timer — sem localStorage, simples
+var secs = 15 * 60;
+var clock = document.getElementById('clock');
+function tick() {
+  if (secs < 0) secs = 0;
+  var m = Math.floor(secs / 60);
+  var s = secs % 60;
+  clock.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  if (secs > 0) { secs--; setTimeout(tick, 1000); }
+}
+tick();
+</script>
+</body>
+</html>
